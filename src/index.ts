@@ -1,10 +1,10 @@
 import express, { Request, Response } from "express";
 import { getUserData, saveUser } from './grpc_client.js';
-
+import {getGeoUserData} from './grpc_geo_client.js';
 
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 
@@ -24,7 +24,7 @@ app.get("/user/:id", async (req: Request, res: Response) => {
   }
 });
 
-// Route to save user data
+// // Route to save user data
 app.post("/user", async (req: Request, res: Response) => {
   const { name, age } = req.body;
   try {
@@ -35,6 +35,22 @@ app.post("/user", async (req: Request, res: Response) => {
     res.status(500).json({ error: error.message });
   }
 });
+
+// geomap
+
+// Route to get user data
+app.get('/geo/:id', async (req: Request, res: Response) => {
+  const userId = req.params.id;
+  try {
+    const response = await getGeoUserData(userId);
+    res.json(response);
+  } catch (error) {
+    if (error instanceof Error)
+    res.status(500).json({ error: error.message });
+  }
+});
+
+
 
 
 app.listen(PORT, () => {

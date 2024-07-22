@@ -21,12 +21,13 @@
     "axios": "^1.7.2",
     "express": "^4.19.2",
     "grpc_tools_node_protoc_ts": "^5.3.3",
-    "grpc-tools": "^1.12.4",
-    "nodemon": "^3.1.2"
+    "grpc-tools": "^1.12.4"
   },
   "devDependencies": {
     "msw": "^2.3.1",
+    "nodemon": "^3.1.4",
     "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0",
     "typescript": "^5.4.5",
     "vitest": "^1.6.0"
   }
