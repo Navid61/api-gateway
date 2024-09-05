@@ -49,7 +49,6 @@ async function initializeClients(): Promise<void> {
     const deadline = new Date().setSeconds(new Date().getSeconds() + 5); // 5 seconds timeout
     await Promise.all([
       checkClientReady(client, deadline),
-    
     ]);
     console.log("user-account client is ready");
   } catch (error) {
